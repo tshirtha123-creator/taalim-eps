@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: light; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+.dark { color-scheme: dark; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; min-width: 320px; color: #0f172a; background: #f8fafc; }
+.dark body { color: #f8fafc; background: #020617; }
+button, select, input, textarea { font: inherit; }
+button { cursor: pointer; }
+.login-bg { background-color: #f1f5f9; background-image: radial-gradient(circle at 15% 15%, rgba(99,102,241,.16), transparent 30%), radial-gradient(circle at 85% 80%, rgba(14,165,233,.13), transparent 30%); }
+.dark .login-bg { background-color: #020617; }
+.stat-icon { display:grid; height:2.75rem; width:2.75rem; flex:none; place-items:center; border-radius:.8rem; }
+.stat-icon.emerald { background:#d1fae5; color:#059669; }.stat-icon.blue { background:#dbeafe;color:#2563eb }.stat-icon.rose { background:#ffe4e6;color:#e11d48 }.stat-icon.amber { background:#fef3c7;color:#d97706 }
+.dark .stat-icon.emerald { background:#022c22 }.dark .stat-icon.blue { background:#172554 }.dark .stat-icon.rose { background:#4c0519 }.dark .stat-icon.amber { background:#451a03 }
+.loader { width: 38px; height: 38px; border: 4px solid #e2e8f0; border-top-color: #4f46e5; border-radius: 50%; animation: spin .8s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { *,*::before,*::after { scroll-behavior:auto!important; transition-duration:.01ms!important; animation-duration:.01ms!important; animation-iteration-count:1!important; } }
