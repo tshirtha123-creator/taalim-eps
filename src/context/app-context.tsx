@@ -4,7 +4,6 @@ import type { CourseState, PlannedItem, StudyData } from "@/types";
 import { isStudyData } from "@/lib/utils";
 
 const STORAGE_KEY = "eps-formation-data-v1";
-const SESSION_KEY = "eps-formation-session";
 const emptyCourse = (): CourseState => ({ completed: false, favorite: false, difficulty: "moyen", notes: "", keyPoints: "" });
 const defaultData = (): StudyData => ({ version: 1, courses: Object.fromEntries(courses.map(course => [course.id, emptyCourse()])), planning: [] });
 const courseIds = new Set(courses.map(course => course.id));
@@ -39,7 +38,7 @@ const AppContext = createContext<AppContextValue | null>(null);
 
 export function AppProvider({ children }: { children: ReactNode }) {
   const [ready, setReady] = useState(false);
-  const [authenticated, setAuthenticated] = useState(false);
+  const [authenticated] = useState(true);
   const [data, setData] = useState<StudyData>(defaultData);
   const [dark, setDark] = useState(false);
   const [toasts, setToasts] = useState<Toast[]>([]);
@@ -48,7 +47,6 @@ export function AppProvider({ children }: { children: ReactNode }) {
     try {
       const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "null");
       if (isStudyData(saved)) setData(normalizeData(saved));
-      setAuthenticated(localStorage.getItem(SESSION_KEY) === "active");
       const theme = localStorage.getItem("eps-theme") === "dark";
       setDark(theme);
       document.documentElement.classList.toggle("dark", theme);
@@ -66,22 +64,9 @@ export function AppProvider({ children }: { children: ReactNode }) {
     window.setTimeout(() => setToasts(current => current.filter(toast => toast.id !== id)), 3200);
   }, []);
 
-  const login = useCallback(async (email: string, password: string) => {
-    const demoEmail = import.meta.env.VITE_DEMO_EMAIL;
-    const demoPassword = import.meta.env.VITE_DEMO_PASSWORD;
-    if (!demoEmail || !demoPassword) return "Configuration de connexion manquante.";
-    if (email.trim().toLowerCase() !== demoEmail.trim().toLowerCase() || password !== demoPassword) {
-      return "Email ou mot de passe incorrect.";
-    }
-    localStorage.setItem(SESSION_KEY, "active");
-    setAuthenticated(true);
-    return null;
-  }, []);
+  const login = useCallback(async () => null, []);
 
-  const logout = useCallback(() => {
-    localStorage.removeItem(SESSION_KEY);
-    setAuthenticated(false);
-  }, []);
+  const logout = useCallback(() => {}, []);
 
   const courseState = useCallback((id: string) => data.courses[id] || emptyCourse(), [data.courses]);
 
