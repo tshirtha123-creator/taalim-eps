@@ -1,6 +1,6 @@
 # EPS Formation Tracker – Taâlim 2026
 
-Application React + Vite entièrement côté client pour suivre les 27 cours EPS (28 parties vidéo) de la préparation Taâlim 2026.
+Application React + Vite entièrement côté client pour suivre les 28 cours EPS (29 parties vidéo) de la préparation Taâlim 2026.
 
 ## Démarrage
 

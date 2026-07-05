@@ -11,7 +11,8 @@ const links = [
   "1C5H2m6pu1", "1EE3v8SPzb", "1AdaaWSodj", "19LxN1kbLB", "1D9Tg6Btvt", "1GBkVx7E1T",
   "1GA4GWv7NG", "1Vr5PNFYh5", "1VHUBuZykB", "1EFgRee1HB", "1JBDTSxMFX", "17rcyFnJAm",
   "14fGBsMK1Wi", "18EgR9n461", "1EweJokmTn", "1bviSQiWE7", "18wGcovLLL", "18QsYcDnpH",
-  "1CvoqwGYmV", "1D69X74jiv", "1D3jjMtuWc", "18tXRYsaih"
+  "1CvoqwGYmV", "1D69X74jiv", "1D3jjMtuWc", "18tXRYsaih",
+  "https://www.facebook.com/reel/1029270502981553"
 ];
 
 export const courses: Course[] = links.map((code, index) => {
@@ -22,6 +23,6 @@ export const courses: Course[] = links.map((code, index) => {
     courseNumber: String(number),
     title: `Cours ${number}`,
     part,
-    url: `https://www.facebook.com/share/v/${code}/`,
+    url: code.startsWith("https://") ? code : `https://www.facebook.com/share/v/${code}/`,
   };
 });
