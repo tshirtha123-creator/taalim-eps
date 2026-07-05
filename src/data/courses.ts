@@ -12,7 +12,8 @@ const links = [
   "1GA4GWv7NG", "1Vr5PNFYh5", "1VHUBuZykB", "1EFgRee1HB", "1JBDTSxMFX", "17rcyFnJAm",
   "14fGBsMK1Wi", "18EgR9n461", "1EweJokmTn", "1bviSQiWE7", "18wGcovLLL", "18QsYcDnpH",
   "1CvoqwGYmV", "1D69X74jiv", "1D3jjMtuWc", "18tXRYsaih",
-  "https://www.facebook.com/reel/1029270502981553"
+  "https://www.facebook.com/reel/1029270502981553",
+  "https://www.facebook.com/reel/1028595283087185"
 ];
 
 export const courses: Course[] = links.map((code, index) => {
